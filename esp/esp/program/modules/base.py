@@ -218,10 +218,7 @@ class ProgramModuleObj(ExpirableModel):
                 return module.get_full_path()
 
     def goToCore(self, tl):
-        url = self.getCoreURL(tl)
-        if url is None:
-            url = '/myesp/'
-        return HttpResponseRedirect(url)
+        return HttpResponseRedirect(self.getCoreURL(tl) or '/')
 
     def require_auth(self):
         return True
